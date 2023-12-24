@@ -1,19 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-data = {
-    "movies": [
-        {"id": 5, "title": "Jaws", "year": 1969},
-        {"id": 6, "title": "Sharknado", "year": 2000},
-        {"id": 7, "title": "The Meg", "year": 2000},
-    ]
-}
+# Have to import the Movie class from model.py
+from .models import Movie
 
 
 # 3 parameters for render - request, template name / location, data dictionary
 def movies(request):
-    #   return render(request, "movies/movies.html", {"movies": ["movie1", "movie2"]})
-    return render(request, "movies/movies.html", data)
+    # Get all the objects from the database
+    data = Movie.objects.all()
+    # Have to convert the queryset data to a dictionary which he called movies
+    return render(request, "movies/movies.html", {"movies": data})
 
 
 def home(request):
