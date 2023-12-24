@@ -15,3 +15,9 @@ def movies(request):
 
 def home(request):
     return HttpResponse("Home Page")
+
+
+def detail(request, id):
+    # This time the data is one record. The id will come from the url when the user clicks on a movie name
+    data = Movie.objects.get(pk=id)
+    return render(request, "movies/detail.html", {"movie": data})

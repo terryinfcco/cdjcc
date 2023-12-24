@@ -10,7 +10,9 @@
     <!-- Refers to the dictionary in views.py which we called movies -->
     <ul>
     {% for movie in movies %}
-        <li>{{ movie.title }}</li>
+        <!-- Make a link and pass the id when clicked -->
+        <!-- Probably better to use django urls but beyond the scope of this crash course -->
+        <li><a href="{{ movie.id }}">{{ movie.title }}</li></a>
     {% endfor %}
     </ul>
 </body>
